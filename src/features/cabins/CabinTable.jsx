@@ -5,6 +5,7 @@ import Spinner from "../../ui/Spinner";
 import Table from "../../ui/Table";
 import CabinRow from "./CabinRow";
 import { useCabins } from "./useCabins";
+import Empty from "../../ui/Empty";
 
 
 
@@ -28,6 +29,7 @@ export default function CabinTable() {
   const [searchParams] = useSearchParams()
 
   if (isLoading) return <Spinner />;
+  if (!cabins.length) return <Empty resourceName="cabins" />
 
   //filter
   const filterValue = searchParams.get('discount') || "all";
